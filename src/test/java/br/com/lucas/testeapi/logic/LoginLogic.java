@@ -33,7 +33,7 @@ private static final String BASE_URI = "http://localhost:";
 	
 	
 	public void validoRetornoToken() {
-		response.then().log().all().assertThat().statusCode(200).header("Authorizantion", not(equalTo("")));
+		response.then().log().all().assertThat().statusCode(200).header("Authorization", not(equalTo("")));
 	}
 	
 	
