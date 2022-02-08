@@ -7,8 +7,8 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "classpath:features",
-				glue = {"br.com.lucas.testeapi.steps"}, //
-				tags = "@login and @TA_0001" // 
+				glue = {"br.com.lucas.testeapi.steps.cadastro"}, //
+				tags = "@obra and @TA_0003" // 
 				)
 public class RunnerTest {
 

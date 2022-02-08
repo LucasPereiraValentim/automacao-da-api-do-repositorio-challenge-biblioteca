@@ -1,4 +1,4 @@
-package br.com.lucas.testeapi.steps;
+package br.com.lucas.testeapi.steps.login;
 
 import br.com.lucas.testeapi.logic.LoginLogic;
 import io.cucumber.java.Before;

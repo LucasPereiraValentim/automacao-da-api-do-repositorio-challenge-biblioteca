@@ -16,9 +16,9 @@ private static final String BASE_URI = "http://localhost:";
 	
 	private static final String BASE_PATH = "/login";
 	
-	private static Response response;
+	public static Response response;
 	
-	private static RestAssured restAssured;
+	public static RestAssured restAssured;
 	
 	public void solicitoRequisicao() {
 		restAssured.given().and()
