@@ -16,8 +16,6 @@ public class LoginStep {
 		this.loginLogic = new LoginLogic();
 	}
 	
-	
-	
 	@Given("solicito requisicao")
 	public void envio_solicitação_uri_base() {
 		this.loginLogic.solicitoRequisicao();

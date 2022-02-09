@@ -51,9 +51,18 @@ public class ObraStep {
 		this.obraLogic.cadastroObraComTituloJaCadastrado();
 	}
 	
-	@Then("valido mensagem")
+	@Then("valido mensagem obra duplicada")
 	public void valido_msg_de_titulo_duplicado() {
 		this.obraLogic.validoMsgObraDuplicada();
 	}
 	
+	@When("envio requisicao com campos vazios")
+	public void envio_requisicao_com_campos_vazios() {
+		this.obraLogic.enviarRequisicaoComCamposVazios();
+	}
+	
+	@Then("valido mensagem de campos em branco")
+	public void valido_msg_de_campos_vazios() {
+		this.obraLogic.validoMsgCamposVazios();
+	}
 }

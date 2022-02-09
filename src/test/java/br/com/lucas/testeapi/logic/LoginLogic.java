@@ -2,9 +2,10 @@ package br.com.lucas.testeapi.logic;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
+import static io.restassured.RestAssured.*;
 
 import br.com.lucas.testeapi.models.Usuario;
-import io.restassured.RestAssured;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -18,17 +19,24 @@ private static final String BASE_URI = "http://localhost:";
 	
 	public static Response response;
 	
-	public static RestAssured restAssured;
+	//public static RestAssured restAssured;
 	
 	public void solicitoRequisicao() {
-		restAssured.given().and()
-		.baseUri(BASE_URI).port(port).basePath(BASE_PATH);
+		given()
+		.and()
+		.baseUri(BASE_URI)
+		.port(port)
+		.basePath(BASE_PATH);
 	}
 	
 	
 	public void preenchoCamposDeLoginNoJson() {
-		response = restAssured.given().contentType(ContentType.JSON).when()
-			.body(Usuario.builder().login("admin").senha("admin").build()).when().post(BASE_PATH);
+		response = given()
+				.contentType(ContentType.JSON)
+				.when()
+				.body(Usuario.builder().login("admin").senha("admin").build())
+				.when()
+				.post(BASE_PATH);
 	}
 	
 	
