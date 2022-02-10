@@ -2,10 +2,10 @@
 @login
 Feature: login
 	
-	#@TA = Teste de API
+	#@TA = Teste de API | L = Login
 	
-  @TA_0001
-  Scenario: Validar retorno de token ao realizar login
-    Given solicito requisicao
-    When preencho campos de login no json
-   	Then valido retorno token
+  @TAL_0001
+  Scenario: Validar token no header da resposta
+    Given que eu envio um solicitacao para uma uri valida
+    When preencho campos de login
+   	Then valido token no header

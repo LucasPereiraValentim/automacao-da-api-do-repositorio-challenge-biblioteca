@@ -2,6 +2,10 @@ package br.com.lucas.testeapi.logic;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static io.restassured.RestAssured.*;
 
 import br.com.lucas.testeapi.models.Usuario;
@@ -9,9 +13,12 @@ import br.com.lucas.testeapi.models.Usuario;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+
 public class LoginLogic {
 	
-private static final String BASE_URI = "http://localhost:";
+	private static final Logger LOG = LoggerFactory.getLogger(LoginLogic.class);
+	
+	private static final String BASE_URI = "http://localhost:";
 	
 	private static final Integer port = 8080;
 	
@@ -19,9 +26,9 @@ private static final String BASE_URI = "http://localhost:";
 	
 	public static Response response;
 	
-	//public static RestAssured restAssured;
-	
 	public void solicitoRequisicao() {
+		String msg = "Solicito requisição";
+		LOG.info(msg);
 		given()
 		.and()
 		.baseUri(BASE_URI)
@@ -31,6 +38,8 @@ private static final String BASE_URI = "http://localhost:";
 	
 	
 	public void preenchoCamposDeLoginNoJson() {
+		String msg = "Preencho campos de login";
+		LOG.info(msg);
 		response = given()
 				.contentType(ContentType.JSON)
 				.when()
@@ -41,7 +50,9 @@ private static final String BASE_URI = "http://localhost:";
 	
 	
 	public void validoRetornoToken() {
-		response.then().log().all().assertThat().statusCode(200).header("Authorization", not(equalTo("")));
+		String msg = "Valido TOKEN no header do response";
+		LOG.info(msg);
+		response.then().statusCode(200).header("Authorization", not(equalTo("")));
 	}
 	
 	

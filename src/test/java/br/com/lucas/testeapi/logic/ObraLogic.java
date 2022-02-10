@@ -55,7 +55,7 @@ public class ObraLogic {
 		.body("titulo", is(equalTo("Já existe uma obra cadastrada com este título")));
 	}
 	
-	public void enviarRequisicaoComCamposVazios() {
+	public void camposVazios() {
 		LoginLogic.response = given()
 				.header("Authorization", this.getToken())
 				.body(Obra.builder().titulo("").editora("").build())

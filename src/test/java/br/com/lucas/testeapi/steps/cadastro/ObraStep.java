@@ -19,12 +19,12 @@ public class ObraStep {
 		this.obraLogic = new ObraLogic();
 	}
 
-	@Given("solicito requisicao")
+	@Given("que eu envio um solicitacao para uma uri valida")
 	public void envio_solicitação_uri_base() {
 		this.loginLogic.solicitoRequisicao();
 	}
 
-	@When("preencho campos de login no json")
+	@When("preencho campos de login")
 	public void preencho_atributos_json() {
 		this.loginLogic.preenchoCamposDeLoginNoJson();
 	}
@@ -58,7 +58,7 @@ public class ObraStep {
 	
 	@When("envio requisicao com campos vazios")
 	public void envio_requisicao_com_campos_vazios() {
-		this.obraLogic.enviarRequisicaoComCamposVazios();
+		this.obraLogic.camposVazios();
 	}
 	
 	@Then("valido mensagem de campos em branco")
