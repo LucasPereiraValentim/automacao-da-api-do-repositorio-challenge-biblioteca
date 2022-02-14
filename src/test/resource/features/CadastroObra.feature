@@ -1,9 +1,10 @@
-@obra
-Feature: Testar funcionalidade de crud
+#Author: lucas.valentim.costa@gmail.com
+@CadastroObra
+Feature: Cadastro de obra e autores
 	
-	# @TA = Teste de API | # O = Obra
+	# @TA = Teste de API
 	
-	@TAO_0001
+	@TA_0001
 	Scenario: Cadastro de obra e autor
 		Given que eu envio um solicitacao para uma uri valida
 		When preencho campos de login
@@ -12,7 +13,7 @@ Feature: Testar funcionalidade de crud
 		Then valido cadastro
     
     
-	@TAO_0002
+	@TA_0002
 	Scenario: Não deve permitir cadastro de titulo duplicada
 		Given que eu envio um solicitacao para uma uri valida
 		When preencho campos de login
@@ -20,7 +21,7 @@ Feature: Testar funcionalidade de crud
 		When preencho campos de cadastro de obra com titulo já cadastrado
 		Then valido mensagem obra duplicada
   
-	@TAO_0003
+	@TA_0003
 	Scenario: Não deve permitir requisicao com campos em branco
 		Given que eu envio um solicitacao para uma uri valida
 		When preencho campos de login

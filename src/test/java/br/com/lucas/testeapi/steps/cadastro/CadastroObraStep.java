@@ -1,22 +1,22 @@
 package br.com.lucas.testeapi.steps.cadastro;
 
 import br.com.lucas.testeapi.logic.LoginLogic;
-import br.com.lucas.testeapi.logic.ObraLogic;
+import br.com.lucas.testeapi.logic.CadastroObraLogic;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ObraStep {
+public class CadastroObraStep {
 
 	private LoginLogic loginLogic;
 	
-	private ObraLogic obraLogic;
+	private CadastroObraLogic obraLogic;
 	
 	@Before
 	public void setup() {
 		this.loginLogic = new LoginLogic();
-		this.obraLogic = new ObraLogic();
+		this.obraLogic = new CadastroObraLogic();
 	}
 
 	@Given("que eu envio um solicitacao para uma uri valida")

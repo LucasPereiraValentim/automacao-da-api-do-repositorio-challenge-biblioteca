@@ -1,9 +1,7 @@
 package br.com.lucas.testeapi.steps.login;
 
 import br.com.lucas.testeapi.logic.LoginLogic;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,11 +13,6 @@ public class LoginStep {
 	@Before
 	public void setup() {
 		this.loginLogic = new LoginLogic();
-	}
-	
-	@After
-	public void before(Scenario scenario) {
-		
 	}
 	
 	@Given("que eu envio um solicitacao para uma uri valida")
