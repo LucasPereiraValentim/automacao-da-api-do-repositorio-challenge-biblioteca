@@ -3,9 +3,12 @@ package br.com.lucas.testeapi.logic;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static br.com.lucas.testeapi.utils.APIUtils.*;
+import static br.com.lucas.testeapi.utils.Await.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +26,7 @@ public class CadastroObraLogic {
 	
 	private List<Autor> autores;
 	
-	private static final String MSG_TITULO_DUPLICADO = "Já existe uma obra cadastrada com este título"; 
-	
-	private static final String MSG_TOKEN = "Incluo o TOKEN no header";
+	private static final String MSG_TITULO_DUPLICADO = "Já existe uma obra cadastrada com este título";
 	
 	private static final String MSG_CAMPOS_VAZIOS = "Um ou mais campos estão vazios";
 	
@@ -40,11 +41,12 @@ public class CadastroObraLogic {
 	
 	
 	public void cadastroObraEAutores() {
-		LOG.info(MSG_TOKEN);
 		LOG.info("Preencho campos dados válidos");
-		LoginLogic.response = given().headers("Authorization", this.getToken()).body(Obra.builder()
-						.titulo("Clean Code").editora("Alta Books; 1ª edição (8 setembro 2009)")
-						.autores(autores).build()).contentType(ContentType.JSON).post(BASE_URI_POST);
+		setHeader("Authorization", this.getToken());
+		setContentTypeRequest(ContentType.JSON);
+		await(() -> post(BASE_URI_POST, Obra.builder()
+				.titulo("Clean Code").editora("Alta Books; 1ª edição (8 setembro 2009)")
+				.autores(autores).build()).statusCode() == 201);
 	}
 	
 	
@@ -55,7 +57,6 @@ public class CadastroObraLogic {
 	}
 	
 	public void cadastroObraComTituloJaCadastrado() {
-		LOG.info(MSG_TOKEN);
 		String msg = "Preencho campos com dados da obra e autores repetidos";
 		LOG.info(msg);
 		LoginLogic.response = given().headers("Authorization", this.getToken()).body(Obra.builder()
@@ -70,7 +71,6 @@ public class CadastroObraLogic {
 	}
 	
 	public void camposVazios() {
-		LOG.info(MSG_TOKEN);
 		String msg = "Envio requisição com campos vázios";
 		LOG.info(msg);
 		LoginLogic.response = given().header("Authorization", this.getToken()).body(Obra.builder().titulo("").editora("").build())

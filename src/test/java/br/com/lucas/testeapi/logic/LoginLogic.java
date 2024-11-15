@@ -2,6 +2,7 @@ package br.com.lucas.testeapi.logic;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
+import static br.com.lucas.testeapi.utils.APIUtils.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +47,12 @@ public class LoginLogic {
 				.body(Usuario.builder().login("admin").senha("admin").build())
 				.when()
 				.post(BASE_PATH);
+	}
+
+	public static String getTokenAcessoAplicacao() {
+		setContentTypeRequest(ContentType.JSON);
+		Response response = post(BASE_PATH, Usuario.builder().login("admin").senha("admin").build());
+		return response.headers().getValue("");
 	}
 	
 	
